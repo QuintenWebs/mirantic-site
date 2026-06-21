@@ -12,8 +12,8 @@ export default {
           soft: "#52524E",
           faint: "#A0A09A",
         },
-        // Subtle warm border
-        line: "#E5E4E0",
+        // Visible warm border (slightly darker for clear dividers)
+        line: "#C9C8C3",
         // Dark accent for CTA buttons
         accent: {
           DEFAULT: "#111110",

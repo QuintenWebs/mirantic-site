@@ -24,6 +24,15 @@
 }
 
 @layer components {
+  /* Thicker dividers — use divide-line-thick or border-line-thick */
+  .border-line-thick {
+    border-color: #C9C8C3;
+    border-width: 1.5px;
+  }
+  .divide-line-thick > * + * {
+    border-top-width: 1.5px;
+    border-color: #C9C8C3;
+  }
   .container-page {
     @apply mx-auto w-full max-w-content px-6 sm:px-10;
   }

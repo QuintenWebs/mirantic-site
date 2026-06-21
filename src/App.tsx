@@ -5,6 +5,7 @@ import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import Work from "@/pages/Work";
 import Contact from "@/pages/Contact";
+import PricingPage from "@/pages/Pricing";
 
 // Scroll to top on navigation, or to the hash target if one is present.
 function ScrollManager() {
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/work" element={<Work />} />
+          <Route path="/pricing" element={<PricingPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
