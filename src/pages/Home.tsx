@@ -1,17 +1,14 @@
-
-import { WHAT_I_DO, STEPS, TIERS, PROJECTS } from "@/content";
+import { useState } from "react";
+import { WHAT_I_DO, STEPS } from "@/content";
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
-import { WorkGrid } from "@/components/WorkGrid";
-import { Pricing } from "@/components/Pricing";
 
 export default function Home() {
   return (
     <>
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section className="pt-32 pb-24 sm:pt-40 sm:pb-32">
         <div className="container-page">
-          {/* Anthropic-style split: headline left, descriptor right */}
           <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_auto] md:items-end">
             <div className="reveal max-w-3xl">
               <p className="eyebrow mb-5">Web design · The Netherlands</p>
@@ -36,7 +33,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── What I do ── */}
+      {/* What I do */}
       <section className="border-t border-line py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow="What I do" title="Thoughtful sites, built to last and easy to run" />
@@ -44,7 +41,11 @@ export default function Home() {
             {WHAT_I_DO.map((f, i) => (
               <div
                 key={f.title}
-                className={`py-8 pr-8 ${i % 2 === 0 ? "sm:border-r border-line" : ""} ${i < WHAT_I_DO.length - 2 ? "border-b border-line" : ""}`}
+                className={[
+                  "py-8 pr-8",
+                  i % 2 === 0 ? "sm:border-r border-line" : "",
+                  i < WHAT_I_DO.length - 2 ? "border-b border-line" : "",
+                ].join(" ")}
               >
                 <p className="text-xs font-medium text-ink-faint tabular-nums mb-3">
                   {String(i + 1).padStart(2, "0")}
@@ -57,10 +58,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── How it works ── */}
+      {/* How it works + CMS + Site examples — all in one block */}
       <section className="border-t border-line py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow="How it works" title="From first call to a site you run yourself" />
+
+          {/* Steps */}
           <ol className="mt-14 grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((step) => (
               <li key={step.n} className="bg-canvas p-8">
@@ -70,56 +73,55 @@ export default function Home() {
               </li>
             ))}
           </ol>
-        </div>
-      </section>
 
-      {/* ── Pricing ── */}
-      <section id="pricing" className="border-t border-line py-20 sm:py-28">
-        <div className="container-page">
-          <SectionHeading eyebrow="Pricing" title="Simple monthly plans" description="Your site, hosting, and editor in one plan. No setup fees, no surprises." />
-          <div className="mt-14">
-            <Pricing tiers={TIERS} />
+          {/* CMS placeholder */}
+          <div className="mt-16 border-t border-line pt-16">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
+              <div>
+                <p className="eyebrow mb-4">Your editor</p>
+                <h2 className="text-2xl font-semibold leading-snug tracking-[-0.02em] text-ink sm:text-3xl">
+                  Update your site yourself — no developer needed.
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-ink-soft">
+                  Every site comes with a clean, simple editor. Click what you want to change, type, publish. No complicated dashboards, no waiting on me for a text change.
+                </p>
+                <p className="mt-3 text-sm text-ink-faint">CMS demo coming soon.</p>
+              </div>
+              {/* CMS placeholder — replace with GIF */}
+              <div className="overflow-hidden rounded-xl border border-line bg-accent-soft aspect-video flex items-center justify-center">
+                <p className="text-sm text-ink-faint">CMS screenshot / GIF</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Site examples */}
+          <div className="mt-16 border-t border-line pt-16">
+            <p className="eyebrow mb-6">Recent work</p>
+            <div className="grid grid-cols-1 gap-px bg-line md:grid-cols-2">
+              <SiteExample
+                label="New site"
+                title="ULP Invest"
+                description="A new site built from scratch for a Dutch microfinance foundation."
+                url="https://www.ulpinvest.com/investors"
+                heroImg="/assets/screenshots/ulpinvest-hero.webp"
+                scrollImg="/assets/screenshots/ulpinvest-scroll.webp"
+              />
+              <SiteExample
+                label="Rebuilt & improved"
+                title="Ubuntu Leadership Program"
+                description="A full redesign and rebuild of an existing site — faster, cleaner, and easier to manage."
+                url="https://ubuntu-lead-82ai2dtb.manus.space/"
+                heroImg="/assets/screenshots/ulp-new-hero.webp"
+                scrollImg="/assets/screenshots/ulp-new-scroll.webp"
+                beforeHeroImg="/assets/screenshots/ulp-old-hero.webp"
+                beforeScrollImg="/assets/screenshots/ulp-old-scroll.webp"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Work ── */}
-      <section className="border-t border-line py-20 sm:py-28">
-        <div className="container-page">
-          <div className="flex items-end justify-between gap-6 mb-14">
-            <SectionHeading eyebrow="Selected work" title="A few recent projects" />
-            <ButtonLink to="/work" variant="ghost" size="md" withArrow className="shrink-0 mb-1">
-              View all
-            </ButtonLink>
-          </div>
-          <WorkGrid projects={PROJECTS.slice(0, 3)} />
-        </div>
-      </section>
-
-      {/* ── About ── */}
-      <section className="border-t border-line py-20 sm:py-28">
-        <div className="container-page grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
-          <div>
-            <p className="eyebrow mb-5">About</p>
-            <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-ink">
-              A small studio, run by one person who cares about the details.
-            </h2>
-          </div>
-          <div className="flex flex-col justify-center gap-5 text-base leading-relaxed text-ink-soft">
-            <p>
-              I'm a web designer and developer based in the Netherlands. I study how brands communicate and translate that into websites that feel right for the people they're meant to reach.
-            </p>
-            <p>
-              I have a background in space exploration, and I think about systems and structure the same way I think about design — from first principles. Strip a problem back to what actually matters, then build up from there.
-            </p>
-            <p>
-              I work with a small number of clients at a time, so every project gets proper attention from start to finish.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Contact ── */}
+      {/* Contact */}
       <section id="contact" className="border-t border-line py-20 sm:py-28">
         <div className="container-page">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
@@ -153,6 +155,102 @@ export default function Home() {
   );
 }
 
+interface SiteExampleProps {
+  label: string;
+  title: string;
+  description: string;
+  url: string;
+  heroImg: string;
+  scrollImg: string;
+  beforeHeroImg?: string;
+  beforeScrollImg?: string;
+}
+
+function SiteExample({ label, title, description, url, heroImg, scrollImg, beforeHeroImg, beforeScrollImg }: SiteExampleProps) {
+  const hasBeforeAfter = !!beforeHeroImg;
+  const [showBefore, setShowBefore] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const activeHero = hasBeforeAfter && showBefore ? beforeHeroImg! : heroImg;
+  const activeScroll = hasBeforeAfter && showBefore ? beforeScrollImg! : scrollImg;
+
+  return (
+    <div className="bg-canvas p-8 flex flex-col gap-6">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <span className="inline-block rounded-full border border-line px-2.5 py-1 text-xs text-ink-faint mb-3">
+            {label}
+          </span>
+          <h3 className="text-base font-semibold text-ink">{title}</h3>
+          <p className="mt-1 text-sm text-ink-soft">{description}</p>
+        </div>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 inline-flex items-center gap-1 text-xs font-medium text-ink-faint hover:text-ink transition-colors mt-1"
+        >
+          Visit
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M2 2h6v6M8 2 2 8" />
+          </svg>
+        </a>
+      </div>
+
+      <div className="relative overflow-hidden rounded-lg border border-line bg-accent-soft">
+        <div className="flex items-center gap-1.5 border-b border-line bg-canvas px-3 py-2">
+          <span className="h-2 w-2 rounded-full bg-line" />
+          <span className="h-2 w-2 rounded-full bg-line" />
+          <span className="h-2 w-2 rounded-full bg-line" />
+        </div>
+        <div className="relative overflow-hidden" style={{ height: "240px" }}>
+          <img
+            src={scrolled ? activeScroll : activeHero}
+            alt={title + " screenshot"}
+            className="w-full object-cover object-top transition-all duration-500"
+            style={{ height: "100%" }}
+          />
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setScrolled(false)}
+            className={"text-xs font-medium transition-colors " + (!scrolled ? "text-ink" : "text-ink-faint hover:text-ink-soft")}
+          >
+            Top
+          </button>
+          <span className="text-ink-faint text-xs">/</span>
+          <button
+            onClick={() => setScrolled(true)}
+            className={"text-xs font-medium transition-colors " + (scrolled ? "text-ink" : "text-ink-faint hover:text-ink-soft")}
+          >
+            Scrolled
+          </button>
+        </div>
+        {hasBeforeAfter && (
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setShowBefore(false)}
+              className={"text-xs font-medium transition-colors " + (!showBefore ? "text-ink" : "text-ink-faint hover:text-ink-soft")}
+            >
+              After
+            </button>
+            <span className="text-ink-faint text-xs">/</span>
+            <button
+              onClick={() => setShowBefore(true)}
+              className={"text-xs font-medium transition-colors " + (showBefore ? "text-ink" : "text-ink-faint hover:text-ink-soft")}
+            >
+              Before
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function ContactForm() {
   return (
     <form
@@ -163,45 +261,22 @@ function ContactForm() {
       className="flex flex-col gap-5"
     >
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="home-name" className="text-xs font-medium text-ink-soft">
-          Name
-        </label>
-        <input
-          id="home-name"
-          type="text"
-          placeholder="Your name"
-          required
-          className="rounded-lg border border-line bg-canvas px-4 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-ink/20 transition"
-        />
+        <label htmlFor="home-name" className="text-xs font-medium text-ink-soft">Name</label>
+        <input id="home-name" type="text" placeholder="Your name" required
+          className="rounded-lg border border-line bg-canvas px-4 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-ink/20 transition" />
       </div>
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="home-email" className="text-xs font-medium text-ink-soft">
-          Email
-        </label>
-        <input
-          id="home-email"
-          type="email"
-          placeholder="you@example.com"
-          required
-          className="rounded-lg border border-line bg-canvas px-4 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-ink/20 transition"
-        />
+        <label htmlFor="home-email" className="text-xs font-medium text-ink-soft">Email</label>
+        <input id="home-email" type="email" placeholder="you@example.com" required
+          className="rounded-lg border border-line bg-canvas px-4 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-ink/20 transition" />
       </div>
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="home-message" className="text-xs font-medium text-ink-soft">
-          Message
-        </label>
-        <textarea
-          id="home-message"
-          rows={4}
-          placeholder="Tell me a little about your business and what you're looking for."
-          required
-          className="rounded-lg border border-line bg-canvas px-4 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-ink/20 transition resize-none"
-        />
+        <label htmlFor="home-message" className="text-xs font-medium text-ink-soft">Message</label>
+        <textarea id="home-message" rows={4} placeholder="Tell me a little about your business and what you're looking for." required
+          className="rounded-lg border border-line bg-canvas px-4 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-ink/20 transition resize-none" />
       </div>
-      <button
-        type="submit"
-        className="self-start inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-accent-fg hover:bg-ink/80 transition-colors duration-150"
-      >
+      <button type="submit"
+        className="self-start inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-accent-fg hover:bg-ink/80 transition-colors duration-150">
         Send message
       </button>
     </form>

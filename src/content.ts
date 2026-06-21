@@ -1,6 +1,5 @@
 /**
  * All site copy lives here so pages stay clean and content is easy to tweak.
- * (Hardcoded for now — no CMS, per the brief.)
  */
 
 export const SITE = {
@@ -53,6 +52,71 @@ export const STEPS = [
     body: "You manage day-to-day content. I'm available for everything beyond that.",
   },
 ];
+
+// ── One-time build pricing ──────────────────────────────────────────────────
+
+export interface BuildTier {
+  name: string;
+  price: string;
+  priceNote?: string;
+  highlight?: boolean;
+  blurb: string;
+  features: string[];
+  cta?: string;
+}
+
+export const BUILD_TIERS: BuildTier[] = [
+  {
+    name: "Simple Site",
+    price: "€800",
+    blurb: "A clean, custom site that gets you online properly.",
+    features: [
+      "Up to 5 pages",
+      "Custom design",
+      "Contact form",
+      "Mobile responsive",
+      "Deployed to your domain",
+    ],
+  },
+  {
+    name: "Standard Site",
+    price: "€1,500",
+    highlight: true,
+    blurb: "More room to grow — with a blog and polished animations.",
+    features: [
+      "Up to 10 pages",
+      "Custom design",
+      "Blog",
+      "Animations",
+      "Contact form",
+      "Deployed to your domain",
+    ],
+  },
+  {
+    name: "Site + Web App",
+    price: "€3,500+",
+    priceNote: "Starting price — scoped per project",
+    blurb: "A marketing site with an authenticated portal or dashboard.",
+    features: [
+      "Marketing site",
+      "Authenticated portal / dashboard",
+      "Custom backend + database",
+      "Fully scoped to your requirements",
+    ],
+    cta: "Let's scope it",
+  },
+];
+
+export const BUILD_ADDONS = [
+  { label: "Extra pages", price: "€75–100 / page" },
+  { label: "Copywriting", price: "€150–300" },
+  { label: "Logo & brand identity", price: "€300–500" },
+  { label: "SEO setup", price: "€150–200" },
+  { label: "Multilingual site", price: "€300+" },
+  { label: "Rush delivery (< 1 week)", price: "+25–30%" },
+];
+
+// ── Monthly CMS / hosting pricing ──────────────────────────────────────────
 
 export interface Tier {
   name: string;
@@ -165,13 +229,13 @@ export const SERVICE_STAGES = [
   },
   {
     title: "Ongoing support",
-    body: "Content edits are always yours to make. Beyond that, support depends on your tier: Starter and Standard cover the site and hosting (Standard adds an hour of changes a month), while Pro gives you a direct line to me for anything more — new sections, integrations, or just advice.",
+    body: "Content edits are always yours to make. Beyond that, support depends on your plan: Starter and Standard cover the site and hosting (Standard adds an hour of changes a month), while Pro gives you a direct line to me for anything more — new sections, integrations, or just advice.",
   },
 ];
 
 export const NAV = [
   { label: "Work", to: "/work" },
   { label: "Services", to: "/services" },
-  { label: "Pricing", to: "/#pricing" },
+  { label: "Pricing", to: "/pricing" },
   { label: "Contact", to: "/contact" },
 ];
