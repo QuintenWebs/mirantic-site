@@ -1,101 +1,93 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import type { ReactNode } from "react";
 
+type Size = "sm" | "md" | "lg";
 type Variant = "primary" | "outline" | "ghost";
-type Size = "md" | "lg";
 
-const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 ease-smooth focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-ring focus-visible:ring-offset-2";
-
-const variants: Record<Variant, string> = {
-  primary: "bg-accent text-accent-fg hover:bg-[#3f6093] shadow-sm hover:shadow",
-  outline: "border border-line text-ink hover:border-ink/30 hover:bg-ink/[0.02]",
-  ghost: "text-ink-soft hover:text-ink",
-};
-
-const sizes: Record<Size, string> = {
-  md: "h-10 px-5 text-sm",
-  lg: "h-12 px-7 text-[0.95rem]",
-};
-
-interface CommonProps {
-  children: ReactNode;
-  variant?: Variant;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: Size;
+  variant?: Variant;
+  withArrow?: boolean;
+}
+
+interface ButtonLinkProps {
+  to: string;
+  size?: Size;
+  variant?: Variant;
   withArrow?: boolean;
   className?: string;
+  children: React.ReactNode;
 }
 
-function content(children: ReactNode, withArrow?: boolean) {
-  return (
-    <>
-      {children}
-      {withArrow && <ArrowRight className="h-4 w-4" />}
-    </>
-  );
-}
+const sizeClasses: Record<Size, string> = {
+  sm: "px-3.5 py-1.5 text-xs",
+  md: "px-4.5 py-2 text-sm",
+  lg: "px-6 py-2.5 text-sm",
+};
 
-/** Internal route link styled as a button. */
-export function ButtonLink({
-  to,
-  children,
-  variant = "primary",
-  size = "md",
-  withArrow,
-  className = "",
-}: CommonProps & { to: string }) {
-  return (
-    <Link to={to} className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}>
-      {content(children, withArrow)}
-    </Link>
-  );
-}
+const variantClasses: Record<Variant, string> = {
+  primary:
+    "rounded-full bg-ink text-accent-fg hover:bg-ink/80 transition-colors duration-150",
+  outline:
+    "rounded-full border border-line bg-transparent text-ink hover:bg-accent-soft transition-colors duration-150",
+  ghost:
+    "rounded-full bg-transparent text-ink-soft hover:text-ink hover:bg-accent-soft transition-colors duration-150",
+};
 
-/** External / absolute link styled as a button. */
-export function ButtonAnchor({
-  href,
-  children,
-  variant = "primary",
-  size = "md",
-  withArrow,
-  className = "",
-  newTab,
-}: CommonProps & { href: string; newTab?: boolean }) {
-  return (
-    <a
-      href={href}
-      {...(newTab ? { target: "_blank", rel: "noreferrer" } : {})}
-      className={`${base} ${variants[variant]} ${sizes[size]} ${className}`}
-    >
-      {content(children, withArrow)}
-    </a>
-  );
-}
-
-/** Real button (form submit / onClick). */
 export function Button({
-  children,
-  variant = "primary",
   size = "md",
-  withArrow,
+  variant = "primary",
+  withArrow = false,
   className = "",
-  type = "button",
-  disabled,
-  onClick,
-}: CommonProps & {
-  type?: "button" | "submit";
-  disabled?: boolean;
-  onClick?: () => void;
-}) {
+  children,
+  ...props
+}: ButtonProps) {
   return (
     <button
-      type={type}
-      disabled={disabled}
-      onClick={onClick}
-      className={`${base} ${variants[variant]} ${sizes[size]} ${className} disabled:opacity-50`}
+      className={`inline-flex items-center gap-1.5 font-medium ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
+      {...props}
     >
-      {content(children, withArrow)}
+      {children}
+      {withArrow && (
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M2.5 6h7M6.5 3l3 3-3 3" />
+        </svg>
+      )}
     </button>
+  );
+}
+
+export function ButtonLink({
+  to,
+  size = "md",
+  variant = "primary",
+  withArrow = false,
+  className = "",
+  children,
+}: ButtonLinkProps) {
+  const isExternal = to.startsWith("http");
+  const classes = `inline-flex items-center gap-1.5 font-medium ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+
+  if (isExternal) {
+    return (
+      <a href={to} target="_blank" rel="noopener noreferrer" className={classes}>
+        {children}
+        {withArrow && (
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M2.5 6h7M6.5 3l3 3-3 3" />
+          </svg>
+        )}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={to} className={classes}>
+      {children}
+      {withArrow && (
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M2.5 6h7M6.5 3l3 3-3 3" />
+        </svg>
+      )}
+    </Link>
   );
 }

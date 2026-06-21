@@ -1,29 +1,20 @@
-interface Props {
+interface SectionHeadingProps {
   eyebrow?: string;
   title: string;
-  intro?: string;
-  align?: "left" | "center";
-  className?: string;
+  description?: string;
+  centered?: boolean;
 }
 
-export function SectionHeading({
-  eyebrow,
-  title,
-  intro,
-  align = "left",
-  className = "",
-}: Props) {
+export function SectionHeading({ eyebrow, title, description, centered = false }: SectionHeadingProps) {
   return (
-    <div
-      className={
-        (align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl") +
-        " " +
-        className
-      }
-    >
-      {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
-      <h2 className="text-2xl font-semibold sm:text-3xl">{title}</h2>
-      {intro && <p className="mt-4 text-lg leading-relaxed text-ink-soft">{intro}</p>}
+    <div className={centered ? "text-center mx-auto max-w-2xl" : "max-w-2xl"}>
+      {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+      <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-ink">
+        {title}
+      </h2>
+      {description && (
+        <p className="mt-4 text-base leading-relaxed text-ink-soft">{description}</p>
+      )}
     </div>
   );
 }
