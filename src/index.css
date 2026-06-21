@@ -8,27 +8,27 @@
     scroll-padding-top: 5rem; /* offset for the fixed header on anchor jumps */
   }
   body {
-    @apply bg-white text-ink-soft font-sans antialiased;
+    @apply bg-[#F7F6F3] text-ink-soft font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
   h1,
   h2,
   h3,
   h4 {
-    @apply text-ink tracking-tightish;
+    @apply text-ink;
     text-wrap: balance;
   }
   ::selection {
-    background: rgba(74, 111, 165, 0.15);
+    background: rgba(17, 17, 16, 0.1);
   }
 }
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+    @apply mx-auto w-full max-w-content px-6 sm:px-10;
   }
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.14em] text-accent;
+    @apply text-xs font-medium uppercase tracking-[0.12em] text-ink-faint;
   }
   /* subtle reveal-on-load for hero/section content */
   .reveal {

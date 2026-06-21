@@ -1,18 +1,19 @@
-import { Link } from "react-router-dom";
-import { SITE } from "@/content";
+interface LogoProps {
+  className?: string;
+}
 
-export function Logo({ onClick }: { onClick?: () => void }) {
+export function Logo({ className = "h-5 w-5" }: LogoProps) {
   return (
-    <Link
-      to="/"
-      onClick={onClick}
-      className="inline-flex items-center gap-2.5 text-ink"
-      aria-label={`${SITE.name} home`}
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      aria-hidden="true"
     >
-      <span className="flex h-7 w-7 items-center justify-center rounded-[7px] bg-accent text-sm font-bold text-white">
-        M
-      </span>
-      <span className="text-[1.05rem] font-semibold tracking-tightish">{SITE.name}</span>
-    </Link>
+      <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" />
+      <rect x="13" y="2" width="9" height="9" rx="2" fill="currentColor" opacity="0.4" />
+      <rect x="2" y="13" width="9" height="9" rx="2" fill="currentColor" opacity="0.4" />
+      <rect x="13" y="13" width="9" height="9" rx="2" fill="currentColor" />
+    </svg>
   );
 }

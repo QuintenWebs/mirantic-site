@@ -4,47 +4,44 @@ import { ButtonLink } from "@/components/Button";
 export default function Services() {
   return (
     <>
-      <section className="container-page pt-16 pb-12 sm:pt-20">
-        <div className="reveal max-w-3xl">
-          <p className="eyebrow mb-4">Services</p>
-          <h1 className="text-4xl font-semibold leading-[1.1] sm:text-5xl">
-            How a project works, start to finish
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft">
-            Every site follows the same careful process — from understanding your brand to
-            handing you the keys and supporting you afterwards.
-          </p>
+      {/* Hero */}
+      <section className="pt-32 pb-20 sm:pt-40 sm:pb-24">
+        <div className="container-page">
+          <div className="reveal max-w-2xl">
+            <p className="eyebrow mb-5">Services</p>
+            <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-ink">
+              How I work with you, start to finish.
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">
+              Every site follows the same careful process — from understanding your brand to handing you the keys and supporting you afterwards.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="border-t border-line py-16 sm:py-20">
+      {/* Process */}
+      <section className="border-t border-line py-20 sm:py-28">
         <div className="container-page">
-          <ol className="space-y-12 sm:space-y-16">
+          <ol className="divide-y divide-line">
             {SERVICE_STAGES.map((stage, i) => (
-              <li
-                key={stage.title}
-                className="grid gap-4 sm:grid-cols-[auto_1fr] sm:gap-10"
-              >
-                <div className="text-3xl font-semibold tabular-nums text-accent/30">
+              <li key={stage.title} className="grid gap-6 py-10 sm:grid-cols-[3rem_1fr_2fr] sm:gap-12 sm:py-12">
+                <p className="text-2xl font-semibold tabular-nums text-ink/20">
                   {String(i + 1).padStart(2, "0")}
-                </div>
-                <div className="max-w-2xl border-t border-line pt-4 sm:border-0 sm:pt-0">
-                  <h2 className="text-xl font-semibold text-ink sm:text-2xl">
-                    {stage.title}
-                  </h2>
-                  <p className="mt-3 text-lg leading-relaxed text-ink-soft">{stage.body}</p>
-                </div>
+                </p>
+                <h2 className="text-base font-semibold text-ink sm:text-lg">{stage.title}</h2>
+                <p className="text-sm leading-relaxed text-ink-soft sm:text-base">{stage.body}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className="border-t border-line bg-accent-soft/40 py-16 sm:py-20">
-        <div className="container-page flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+      {/* CTA */}
+      <section className="border-t border-line py-20 sm:py-28">
+        <div className="container-page flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
           <div>
-            <h2 className="text-2xl font-semibold sm:text-3xl">Ready to start?</h2>
-            <p className="mt-2 text-lg text-ink-soft">
+            <h2 className="text-2xl font-semibold tracking-[-0.02em] text-ink sm:text-3xl">Ready to start?</h2>
+            <p className="mt-2 text-base text-ink-soft">
               Book a discovery call or send a message — no commitment.
             </p>
           </div>

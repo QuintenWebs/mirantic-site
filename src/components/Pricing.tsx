@@ -1,114 +1,105 @@
 import { useState } from "react";
-import { Check } from "lucide-react";
-import { TIERS } from "@/content";
-import { SectionHeading } from "./SectionHeading";
-import { ButtonLink } from "./Button";
+import { Link } from "react-router-dom";
+import { Tier } from "@/content";
 
-type Billing = "monthly" | "annual";
-
-function priceFor(monthly: number, billing: Billing): number {
-  // Annual = 2 months free → 10 months' cost spread over 12.
-  return billing === "annual" ? Math.round((monthly * 10) / 12) : monthly;
+interface PricingProps {
+  tiers: Tier[];
 }
 
-export function Pricing() {
-  const [billing, setBilling] = useState<Billing>("monthly");
+export function Pricing({ tiers }: PricingProps) {
+  const [annual, setAnnual] = useState(false);
 
   return (
-    <section id="pricing" className="border-t border-line bg-accent-soft/40 py-20 sm:py-28">
-      <div className="container-page">
-        <SectionHeading
-          eyebrow="Pricing"
-          title="Simple monthly plans"
-          intro="Your site, hosting, and editor in one plan. No setup fees, no surprises."
-          align="center"
-        />
+    <div>
+      {/* Toggle */}
+      <div className="mb-10 flex items-center gap-3">
+        <button
+          onClick={() => setAnnual(false)}
+          className={`text-sm transition-colors ${!annual ? "text-ink font-medium" : "text-ink-faint hover:text-ink-soft"}`}
+        >
+          Monthly
+        </button>
+        <button
+          onClick={() => setAnnual((v) => !v)}
+          className="relative h-6 w-10 rounded-full bg-line transition-colors focus:outline-none focus:ring-2 focus:ring-ink/20"
+          role="switch"
+          aria-checked={annual}
+        >
+          <span
+            className={`absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-ink transition-transform duration-200 ${annual ? "translate-x-4" : "translate-x-0"}`}
+          />
+        </button>
+        <button
+          onClick={() => setAnnual(true)}
+          className={`text-sm transition-colors ${annual ? "text-ink font-medium" : "text-ink-faint hover:text-ink-soft"}`}
+        >
+          Annual
+          <span className="ml-1.5 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-medium text-ink-soft">
+            2 months free
+          </span>
+        </button>
+      </div>
 
-        {/* Billing toggle */}
-        <div className="mt-8 flex justify-center">
-          <div className="inline-flex items-center rounded-full border border-line bg-white p-1">
-            {(["monthly", "annual"] as Billing[]).map((b) => (
-              <button
-                key={b}
-                onClick={() => setBilling(b)}
-                className={
-                  "rounded-full px-4 py-1.5 text-sm font-medium transition-colors " +
-                  (billing === b ? "bg-accent text-white" : "text-ink-soft hover:text-ink")
-                }
-              >
-                {b === "monthly" ? "Monthly" : "Annual"}
-                {b === "annual" && (
-                  <span
-                    className={
-                      "ml-1.5 text-xs " +
-                      (billing === "annual" ? "text-white/80" : "text-accent")
-                    }
-                  >
-                    2 months free
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {TIERS.map((tier) => (
+      {/* Cards */}
+      <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-3">
+        {tiers.map((tier) => {
+          const price = annual ? Math.round(tier.monthly * 10) : tier.monthly;
+          return (
             <div
               key={tier.name}
-              className={
-                "relative flex flex-col rounded-2xl bg-white p-7 transition-shadow " +
-                (tier.highlight
-                  ? "border-2 border-accent shadow-md"
-                  : "border border-line shadow-sm")
-              }
+              className={`relative flex flex-col bg-canvas p-8 ${tier.highlight ? "ring-1 ring-ink" : ""}`}
             >
               {tier.highlight && (
-                <span className="absolute -top-3 left-7 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-white">
+                <p className="absolute top-4 right-4 text-xs font-medium text-ink-soft bg-accent-soft rounded-full px-2.5 py-1">
                   Most popular
-                </span>
+                </p>
               )}
-              <h3 className="text-lg font-semibold text-ink">{tier.name}</h3>
-              <p className="mt-1 text-sm text-ink-soft">{tier.blurb}</p>
-
-              <div className="mt-5 flex items-baseline gap-1">
-                <span className="text-4xl font-semibold tracking-tight text-ink">
-                  €{priceFor(tier.monthly, billing)}
-                </span>
-                <span className="text-sm text-ink-faint">/month</span>
+              <div className="mb-8">
+                <h3 className="text-base font-semibold text-ink">{tier.name}</h3>
+                <p className="mt-1 text-sm text-ink-soft">{tier.blurb}</p>
               </div>
-              <p className="mt-1 h-4 text-xs text-ink-faint">
-                {billing === "annual" ? `billed €${tier.monthly * 10}/year` : "billed monthly"}
-              </p>
-
-              <ul className="mt-6 space-y-3">
+              <div className="mb-8">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl font-semibold tracking-tight text-ink">€{price}</span>
+                  <span className="text-sm text-ink-faint">/{annual ? "mo" : "month"}</span>
+                </div>
+                {annual && (
+                  <p className="mt-1 text-xs text-ink-faint">billed annually</p>
+                )}
+                {!annual && (
+                  <p className="mt-1 text-xs text-ink-faint">billed monthly</p>
+                )}
+              </div>
+              <ul className="mb-10 flex flex-col gap-2.5 flex-1">
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-ink-soft">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                    <span>{f}</span>
+                    <svg className="mt-0.5 shrink-0 text-ink" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M2 7l3.5 3.5L12 3.5" />
+                    </svg>
+                    {f}
                   </li>
                 ))}
               </ul>
-
-              <div className="mt-7 pt-1">
-                <ButtonLink
-                  to="/contact"
-                  variant={tier.highlight ? "primary" : "outline"}
-                  className="w-full"
-                >
-                  Get started
-                </ButtonLink>
-              </div>
+              <Link
+                to="/contact"
+                className={`inline-flex justify-center rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-150 ${
+                  tier.highlight
+                    ? "bg-ink text-accent-fg hover:bg-ink/80"
+                    : "border border-line bg-transparent text-ink hover:bg-accent-soft"
+                }`}
+              >
+                Get started
+              </Link>
             </div>
-          ))}
-        </div>
-
-        <div className="mt-10 text-center">
-          <ButtonLink to="/contact" variant="ghost" withArrow>
-            Not sure which fits? Let's talk
-          </ButtonLink>
-        </div>
+          );
+        })}
       </div>
-    </section>
+
+      <div className="mt-8 text-center">
+        <Link to="/contact" className="text-sm text-ink-soft hover:text-ink transition-colors">
+          Not sure which fits? Let's talk →
+        </Link>
+      </div>
+    </div>
   );
 }

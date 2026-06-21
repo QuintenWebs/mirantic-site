@@ -4,19 +4,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Muted slate blue accent — #4A6FA5
-        accent: {
-          DEFAULT: "#4A6FA5",
-          fg: "#ffffff",
-          soft: "#EEF2F8",
-          ring: "#4A6FA5",
-        },
+        // Warm off-white canvas background (Chronicle-style)
+        canvas: "#F7F6F3",
+        // Near-black ink
         ink: {
-          DEFAULT: "#1A1F29", // near-black headings
-          soft: "#475467", // body gray
-          faint: "#98A2B3", // muted/labels
+          DEFAULT: "#111110",
+          soft: "#52524E",
+          faint: "#A0A09A",
         },
-        line: "#E7E9EE", // hairline borders
+        // Subtle warm border
+        line: "#E5E4E0",
+        // Dark accent for CTA buttons
+        accent: {
+          DEFAULT: "#111110",
+          fg: "#F7F6F3",
+          soft: "#EEEDE9",
+          muted: "#D4D3CE",
+        },
+        // Dark footer
+        footer: {
+          bg: "#111110",
+          text: "#A0A09A",
+          heading: "#F7F6F3",
+        },
       },
       fontFamily: {
         sans: [
@@ -31,9 +41,12 @@ export default {
       },
       maxWidth: {
         content: "72rem",
+        prose: "42rem",
       },
       letterSpacing: {
-        tightish: "-0.01em",
+        tightish: "-0.015em",
+        tight: "-0.025em",
+        tighter: "-0.03em",
       },
       transitionTimingFunction: {
         smooth: "cubic-bezier(0.22, 1, 0.36, 1)",
