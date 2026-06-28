@@ -27,10 +27,18 @@ export default {
           text: "#A0A09A",
           heading: "#F7F6F3",
         },
+        // Mirantic brand colors
+        brand: {
+          navy: "#0b1220",
+          blue: "#1e7fc2",
+          cyan: "#46c5f2",
+          "mid-blue": "#5ba8e0",
+          "dark-blue": "#0d5a9e",
+        },
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "Hanken Grotesk",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
