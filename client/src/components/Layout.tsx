@@ -38,7 +38,7 @@ const navItems: NavItem[] = [
   },
   { label: "Investment Fund", href: "https://ulpinvest.com", external: true },
   { label: "Leadership Trips", href: "/407-2/" },
-  { label: "Short Courses", href: "/short-courses/", comingSoon: true },  // page not yet built
+  { label: "Short Courses", href: "/short-courses/" },
   { label: "News & Stories", href: "/news-stories/" },
   {
     label: "About Us",

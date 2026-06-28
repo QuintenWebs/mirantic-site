@@ -14,10 +14,9 @@ function FadeSection({ children, delay = 0 }: { children: React.ReactNode; delay
 }
 
 const team = [
-  { name: "Hans Valkenburg", img: "/manus-storage/team-hans_caa2ef2d.jpg", linkedin: "https://www.linkedin.com/in/hansvalkenburg/" },
-  { name: "Kees Huibers", img: "/manus-storage/team-kees_9c68edc2.jpg", linkedin: "https://www.linkedin.com/in/keeshuibers/" },
-  { name: "Lydia Huibers-Slomp", img: "/manus-storage/team-lydia_5b924f4b.jpg", linkedin: "https://www.linkedin.com/in/lydia-huibers-slomp-864b14178/" },
-  { name: "Janne Reedeker", img: "/manus-storage/team-janne_6e1d1a39.jpg", linkedin: "https://www.linkedin.com/in/janne-reedeker-6a55b9236/" },
+  { name: "Janne Reedeker", img: "/manus-storage/janne-reedeker_c4c3c8b4.png", linkedin: "https://www.linkedin.com/in/janne-reedeker-6a55b9236/" },
+  { name: "Nasra Kigombola", img: "/manus-storage/nasra-kigombola_ab813338.png", linkedin: "" },
+  { name: "Kaspari", img: "/manus-storage/kaspari_b59d8f1c.png", linkedin: "" },
   { name: "Shakira Nasser", img: "/manus-storage/team-shakira_eb467108.jpg", linkedin: "https://www.linkedin.com/in/shakira-nasser-ba7918133/" },
 ];
 
@@ -40,16 +39,18 @@ export default function MeetOurTeam() {
           <FadeSection delay={60}>
             <span className="ulp-label ulp-label-outline mb-8 inline-block">The Initiators</span>
           </FadeSection>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((member, i) => (
               <FadeSection key={member.name} delay={i * 70}>
-                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="group">
                   <div className="overflow-hidden mb-3">
-                    <img src={member.img} alt={member.name} className="w-full h-64 object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                    <img src={member.img} alt={member.name} className="w-full h-72 object-cover object-top transition-transform duration-500 group-hover:scale-105" />
                   </div>
                   <p className="font-semibold text-[#2C2416] text-sm" style={{ fontFamily: "'Barlow Condensed', sans-serif", letterSpacing: "0.04em" }}>{member.name}</p>
-                  <p className="text-xs mt-0.5" style={{ color: "#D4521A" }}>LinkedIn →</p>
-                </a>
+                  {member.linkedin && (
+                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-xs mt-0.5 block" style={{ color: "#D4521A" }}>LinkedIn →</a>
+                  )}
+                </div>
               </FadeSection>
             ))}
           </div>

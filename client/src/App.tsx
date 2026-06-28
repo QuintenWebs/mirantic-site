@@ -29,6 +29,7 @@ import History from "./pages/History";
 import AboutUs from "./pages/AboutUs";
 import AnbiRapportage from "./pages/AnbiRapportage";
 import ContactUs from "./pages/ContactUs";
+import ShortCourses from "./pages/ShortCourses";
 import NotFound from "./pages/NotFound";
 
 function Router() {
@@ -36,6 +37,8 @@ function Router() {
     <Switch>
       {/* Main pages */}
       <Route path="/" component={Home} />
+      <Route path="/short-courses/" component={ShortCourses} />
+      <Route path="/short-courses" component={ShortCourses} />
       <Route path="/the-program/" component={TheProgram} />
       <Route path="/the-program" component={TheProgram} />
       <Route path="/our-curriculum/" component={OurCurriculum} />
