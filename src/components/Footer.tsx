@@ -9,9 +9,8 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-[1fr_auto_auto]">
           {/* Brand column */}
           <div className="flex flex-col gap-6">
-            <Link to="/" className="flex items-center gap-2 w-fit">
-              <Logo className="h-5 w-5 text-footer-heading" />
-              <span className="text-sm font-semibold text-footer-heading">Mirantic</span>
+            <Link to="/" className="w-fit">
+              <Logo variant="light" height={20} />
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
               Custom websites for small businesses — built to last, easy to manage.
