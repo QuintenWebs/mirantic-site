@@ -28,8 +28,8 @@ export default function Services() {
                 <p className="text-2xl font-semibold tabular-nums text-ink/20">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h2 className="text-base font-semibold text-ink sm:text-lg">{stage.title}</h2>
-                <p className="text-sm leading-relaxed text-ink-soft sm:text-base">{stage.body}</p>
+                <h2 className="text-base font-semibold text-ink sm:text-lg" data-cms-field={`serviceStages[${i}].title`}>{stage.title}</h2>
+                <p className="text-sm leading-relaxed text-ink-soft sm:text-base" data-cms-field={`serviceStages[${i}].body`}>{stage.body}</p>
               </li>
             ))}
           </ol>

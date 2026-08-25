@@ -7,7 +7,7 @@ interface WorkGridProps {
 export function WorkGrid({ projects }: WorkGridProps) {
   return (
     <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
-      {projects.map((project) => (
+      {projects.map((project, i) => (
         <a
           key={project.name}
           href={project.url}
@@ -21,11 +21,11 @@ export function WorkGrid({ projects }: WorkGridProps) {
             </span>
           )}
           <div className="flex-1">
-            <p className="text-xs text-ink-faint mb-2">{project.client}</p>
-            <h3 className="text-base font-semibold text-ink group-hover:text-ink transition-colors">
+            <p className="text-xs text-ink-faint mb-2" data-cms-field={`projects[${i}].client`}>{project.client}</p>
+            <h3 className="text-base font-semibold text-ink group-hover:text-ink transition-colors" data-cms-field={`projects[${i}].name`}>
               {project.name}
             </h3>
-            <p className="mt-2 text-sm leading-relaxed text-ink-soft">{project.description}</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft" data-cms-field={`projects[${i}].description`}>{project.description}</p>
           </div>
           <div className="mt-6 flex items-center gap-1.5 text-xs font-medium text-ink-faint group-hover:text-ink transition-colors">
             View project
