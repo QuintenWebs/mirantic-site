@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { WHAT_I_DO, STEPS } from "@/content";
+import { WHAT_I_DO, STEPS, HOME } from "@/content";
 import { ButtonLink } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
 
@@ -11,21 +11,23 @@ export default function Home() {
         <div className="container-page">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_auto] md:items-end">
             <div className="reveal max-w-3xl">
-              <p className="eyebrow mb-5">Web design · The Netherlands</p>
+              <p className="eyebrow mb-5" data-cms-field="home.hero.eyebrow">{HOME.hero.eyebrow}</p>
               <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-ink">
-                Websites that truly<br className="hidden sm:block" /> represent who you are.
+                <span data-cms-field="home.hero.titleLine1">{HOME.hero.titleLine1}</span>
+                <br className="hidden sm:block" />{" "}
+                <span data-cms-field="home.hero.titleLine2">{HOME.hero.titleLine2}</span>
               </h1>
             </div>
             <div className="reveal max-w-sm md:pb-2" style={{ animationDelay: "0.1s" }}>
-              <p className="text-base leading-relaxed text-ink-soft">
-                I design and build fast, custom websites for small businesses — then hand you a simple editor so updating your content never means waiting on a developer.
+              <p className="text-base leading-relaxed text-ink-soft" data-cms-field="home.hero.body">
+                {HOME.hero.body}
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <ButtonLink to="/contact" size="lg" withArrow>
-                  Let's talk
+                  <span data-cms-field="home.hero.primaryCta">{HOME.hero.primaryCta}</span>
                 </ButtonLink>
                 <ButtonLink to="/work" size="lg" variant="outline">
-                  See my work
+                  <span data-cms-field="home.hero.secondaryCta">{HOME.hero.secondaryCta}</span>
                 </ButtonLink>
               </div>
             </div>
@@ -50,8 +52,8 @@ export default function Home() {
                 <p className="text-xs font-medium text-ink-faint tabular-nums mb-3">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="text-base font-semibold text-ink leading-snug">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{f.body}</p>
+                <h3 className="text-base font-semibold text-ink leading-snug" data-cms-field={`whatIDo[${i}].title`}>{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft" data-cms-field={`whatIDo[${i}].body`}>{f.body}</p>
               </div>
             ))}
           </div>
@@ -65,11 +67,11 @@ export default function Home() {
 
           {/* Steps */}
           <ol className="mt-14 grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
-            {STEPS.map((step) => (
+            {STEPS.map((step, i) => (
               <li key={step.n} className="bg-canvas p-8">
                 <p className="text-3xl font-semibold tabular-nums text-ink/15 mb-5">{step.n}</p>
-                <h3 className="text-base font-semibold text-ink">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{step.body}</p>
+                <h3 className="text-base font-semibold text-ink" data-cms-field={`steps[${i}].title`}>{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft" data-cms-field={`steps[${i}].body`}>{step.body}</p>
               </li>
             ))}
           </ol>
@@ -78,14 +80,14 @@ export default function Home() {
           <div className="mt-16 border-t border-line pt-16">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
               <div>
-                <p className="eyebrow mb-4">Your editor</p>
-                <h2 className="text-2xl font-semibold leading-snug tracking-[-0.02em] text-ink sm:text-3xl">
-                  Update your site yourself — no developer needed.
+                <p className="eyebrow mb-4" data-cms-field="home.editor.eyebrow">{HOME.editor.eyebrow}</p>
+                <h2 className="text-2xl font-semibold leading-snug tracking-[-0.02em] text-ink sm:text-3xl" data-cms-field="home.editor.title">
+                  {HOME.editor.title}
                 </h2>
-                <p className="mt-4 text-base leading-relaxed text-ink-soft">
-                  Every site comes with a clean, simple editor. Click what you want to change, type, publish. No complicated dashboards, no waiting on me for a text change.
+                <p className="mt-4 text-base leading-relaxed text-ink-soft" data-cms-field="home.editor.body">
+                  {HOME.editor.body}
                 </p>
-                <p className="mt-3 text-sm text-ink-faint">CMS demo coming soon.</p>
+                <p className="mt-3 text-sm text-ink-faint" data-cms-field="home.editor.note">{HOME.editor.note}</p>
               </div>
               {/* CMS placeholder — replace with GIF */}
               <div className="overflow-hidden rounded-xl border border-line bg-accent-soft aspect-video flex items-center justify-center">
@@ -96,7 +98,7 @@ export default function Home() {
 
           {/* Site examples */}
           <div className="mt-16 border-t border-line pt-16">
-            <p className="eyebrow mb-6">Recent work</p>
+            <p className="eyebrow mb-6" data-cms-field="home.work.eyebrow">{HOME.work.eyebrow}</p>
             <div className="grid grid-cols-1 gap-px bg-line md:grid-cols-2">
               <SiteExample
                 label="New site"
@@ -126,12 +128,12 @@ export default function Home() {
         <div className="container-page">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
             <div>
-              <p className="eyebrow mb-5">Contact</p>
-              <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-ink">
-                Let's talk about your site.
+              <p className="eyebrow mb-5" data-cms-field="home.contact.eyebrow">{HOME.contact.eyebrow}</p>
+              <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-ink" data-cms-field="home.contact.title">
+                {HOME.contact.title}
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-ink-soft max-w-sm">
-                Tell me a bit about your business and what you need. I reply within a day.
+              <p className="mt-4 text-base leading-relaxed text-ink-soft max-w-sm" data-cms-field="home.contact.body">
+                {HOME.contact.body}
               </p>
               <div className="mt-8">
                 <a

@@ -1,4 +1,4 @@
-import { SITE } from "@/content";
+import { SITE, PAGES } from "@/content";
 
 export default function Contact() {
   return (
@@ -7,12 +7,12 @@ export default function Contact() {
       <section className="pt-32 pb-20 sm:pt-40 sm:pb-24">
         <div className="container-page">
           <div className="reveal max-w-2xl">
-            <p className="eyebrow mb-5">Contact</p>
+            <p className="eyebrow mb-5" data-cms-field="pages.contact.eyebrow">{PAGES.contact.eyebrow}</p>
             <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-ink">
-              Let's talk about your site.
+              <span data-cms-field="pages.contact.title">{PAGES.contact.title}</span>
             </h1>
             <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft">
-              Tell me a bit about your business and what you need. I reply within a day — or book a call and we'll talk it through.
+              <span data-cms-field="pages.contact.body">{PAGES.contact.body}</span>
             </p>
             <div className="mt-6">
               <a
@@ -37,7 +37,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_1.5fr]">
             {/* Left: info */}
             <div>
-              <h2 className="text-lg font-semibold text-ink">Send a message</h2>
+              <h2 className="text-lg font-semibold text-ink" data-cms-field="pages.contact.formTitle">{PAGES.contact.formTitle}</h2>
               <p className="mt-3 text-sm leading-relaxed text-ink-soft">
                 Use the form or reach out directly. I'm a one-person studio, so you'll always hear from me personally.
               </p>

@@ -1,4 +1,4 @@
-import { PROJECTS } from "@/content";
+import { PROJECTS, PAGES } from "@/content";
 import { WorkGrid } from "@/components/WorkGrid";
 import { ButtonLink } from "@/components/Button";
 
@@ -9,15 +9,15 @@ export default function Work() {
       <section className="pt-32 pb-20 sm:pt-40 sm:pb-24">
         <div className="container-page">
           <div className="reveal max-w-2xl">
-            <p className="eyebrow mb-5">Work</p>
+            <p className="eyebrow mb-5" data-cms-field="pages.work.eyebrow">{PAGES.work.eyebrow}</p>
             <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-ink">
-              Sites built for small businesses.
+              <span data-cms-field="pages.work.title">{PAGES.work.title}</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">
-              A selection of recent projects. Each one is custom-built and handed over with an editor the owner manages themselves.
+              <span data-cms-field="pages.work.body">{PAGES.work.body}</span>
             </p>
             <p className="mt-3 text-sm text-ink-faint">
-              Projects shown are placeholders while the portfolio is being finalised.
+              <span data-cms-field="pages.work.note">{PAGES.work.note}</span>
             </p>
           </div>
         </div>
@@ -34,10 +34,10 @@ export default function Work() {
       <section className="border-t border-line py-20 sm:py-28">
         <div className="container-page text-center">
           <h2 className="text-2xl font-semibold tracking-[-0.02em] text-ink sm:text-3xl">
-            Want something like this?
+            <span data-cms-field="pages.work.ctaTitle">{PAGES.work.ctaTitle}</span>
           </h2>
           <p className="mx-auto mt-3 max-w-md text-base text-ink-soft">
-            Let's talk about what your business needs.
+            <span data-cms-field="pages.work.ctaBody">{PAGES.work.ctaBody}</span>
           </p>
           <div className="mt-8 flex justify-center">
             <ButtonLink to="/contact" size="lg" withArrow>

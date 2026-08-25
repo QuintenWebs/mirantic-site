@@ -29,7 +29,7 @@ export default function PricingPage() {
             description="Pay once to get your site designed, built, and deployed. No recurring fee unless you want hosting and support."
           />
           <div className="mt-14 grid grid-cols-1 gap-px bg-line sm:grid-cols-3">
-            {BUILD_TIERS.map((tier) => (
+            {BUILD_TIERS.map((tier, ti) => (
               <div
                 key={tier.name}
                 className={[
@@ -39,27 +39,27 @@ export default function PricingPage() {
               >
                 <div>
                   <p className={"text-xs font-medium uppercase tracking-[0.1em] mb-3 " + (tier.highlight ? "text-accent-fg/50" : "text-ink-faint")}>
-                    {tier.name}
+                    <span data-cms-field={`buildTiers[${ti}].name`}>{tier.name}</span>
                   </p>
-                  <p className={"text-4xl font-semibold tracking-[-0.03em] " + (tier.highlight ? "text-accent-fg" : "text-ink")}>
+                  <p className={"text-4xl font-semibold tracking-[-0.03em] " + (tier.highlight ? "text-accent-fg" : "text-ink")} data-cms-field={`buildTiers[${ti}].price`}>
                     {tier.price}
                   </p>
                   {tier.priceNote && (
                     <p className={"text-xs mt-1 " + (tier.highlight ? "text-accent-fg/60" : "text-ink-faint")}>
-                      {tier.priceNote}
+                      <span data-cms-field={`buildTiers[${ti}].priceNote`}>{tier.priceNote}</span>
                     </p>
                   )}
-                  <p className={"mt-3 text-sm leading-relaxed " + (tier.highlight ? "text-accent-fg/80" : "text-ink-soft")}>
-                    {tier.blurb}
+                  <p className={"mt-3 text-sm leading-relaxed " + (tier.highlight ? "text-accent-fg/80" : "text-ink-soft")} data-cms-field={`buildTiers[${ti}].blurb`}>
+                    <span data-cms-field={`tiers[${ti}].blurb`}>{tier.blurb}</span>
                   </p>
                 </div>
                 <ul className="flex flex-col gap-2.5">
-                  {tier.features.map((f) => (
+                  {tier.features.map((f, fi) => (
                     <li key={f} className="flex items-start gap-2.5 text-sm">
                       <svg className={"mt-0.5 shrink-0 " + (tier.highlight ? "text-accent-fg/60" : "text-ink-faint")} width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M2.5 7l3 3 6-6" />
                       </svg>
-                      <span className={tier.highlight ? "text-accent-fg/90" : "text-ink-soft"}>{f}</span>
+                      <span className={tier.highlight ? "text-accent-fg/90" : "text-ink-soft"} data-cms-field={`buildTiers[${ti}].features[${fi}]`}>{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -86,10 +86,10 @@ export default function PricingPage() {
           <div className="mt-16 border-t border-line pt-12">
             <p className="eyebrow mb-6">Add-ons</p>
             <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
-              {BUILD_ADDONS.map((addon) => (
+              {BUILD_ADDONS.map((addon, ai) => (
                 <div key={addon.label} className="bg-canvas flex items-center justify-between gap-4 px-6 py-4">
-                  <span className="text-sm text-ink-soft">{addon.label}</span>
-                  <span className="text-sm font-medium text-ink tabular-nums">{addon.price}</span>
+                  <span className="text-sm text-ink-soft" data-cms-field={`buildAddons[${ai}].label`}>{addon.label}</span>
+                  <span className="text-sm font-medium text-ink tabular-nums" data-cms-field={`buildAddons[${ai}].price`}>{addon.price}</span>
                 </div>
               ))}
             </div>
@@ -106,7 +106,7 @@ export default function PricingPage() {
             description="Keep your site running, up to date, and easy to manage. Includes hosting, your editor, and ongoing support."
           />
           <div className="mt-14 grid grid-cols-1 gap-px bg-line sm:grid-cols-3">
-            {TIERS.map((tier) => (
+            {TIERS.map((tier, ti) => (
               <div
                 key={tier.name}
                 className={[
@@ -116,23 +116,23 @@ export default function PricingPage() {
               >
                 <div>
                   <p className={"text-xs font-medium uppercase tracking-[0.1em] mb-3 " + (tier.highlight ? "text-accent-fg/50" : "text-ink-faint")}>
-                    {tier.name}
+                    <span data-cms-field={`tiers[${ti}].name`}>{tier.name}</span>
                   </p>
                   <p className={"text-4xl font-semibold tracking-[-0.03em] " + (tier.highlight ? "text-accent-fg" : "text-ink")}>
                     €{tier.monthly}
                     <span className={"text-base font-normal " + (tier.highlight ? "text-accent-fg/50" : "text-ink-faint")}>/mo</span>
                   </p>
-                  <p className={"mt-3 text-sm leading-relaxed " + (tier.highlight ? "text-accent-fg/80" : "text-ink-soft")}>
-                    {tier.blurb}
+                  <p className={"mt-3 text-sm leading-relaxed " + (tier.highlight ? "text-accent-fg/80" : "text-ink-soft")} data-cms-field={`buildTiers[${ti}].blurb`}>
+                    <span data-cms-field={`tiers[${ti}].blurb`}>{tier.blurb}</span>
                   </p>
                 </div>
                 <ul className="flex flex-col gap-2.5">
-                  {tier.features.map((f) => (
+                  {tier.features.map((f, fi) => (
                     <li key={f} className="flex items-start gap-2.5 text-sm">
                       <svg className={"mt-0.5 shrink-0 " + (tier.highlight ? "text-accent-fg/60" : "text-ink-faint")} width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M2.5 7l3 3 6-6" />
                       </svg>
-                      <span className={tier.highlight ? "text-accent-fg/90" : "text-ink-soft"}>{f}</span>
+                      <span className={tier.highlight ? "text-accent-fg/90" : "text-ink-soft"} data-cms-field={`tiers[${ti}].features[${fi}]`}>{f}</span>
                     </li>
                   ))}
                 </ul>
