@@ -4,28 +4,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm off-white canvas background (Chronicle-style)
-        canvas: "#F7F6F3",
-        // Near-black ink
+        // Near-black ground, biased toward the brand navy rather than a neutral
+        // grey — the whole palette is one hue family so the accent belongs to it.
+        canvas: "#060A12",
+        raised: "#0D1524",
         ink: {
-          DEFAULT: "#111110",
-          soft: "#52524E",
-          faint: "#A0A09A",
+          DEFAULT: "#EEF2F8",
+          soft: "#A2B0C6",
+          faint: "#697993",
         },
-        // Visible warm border (slightly darker for clear dividers)
-        line: "#C9C8C3",
-        // Dark accent for CTA buttons
+        line: "#1B2740",
+        // On a dark ground the primary button inverts: light fill, dark label.
         accent: {
-          DEFAULT: "#111110",
-          fg: "#F7F6F3",
-          soft: "#EEEDE9",
-          muted: "#D4D3CE",
+          DEFAULT: "#EEF2F8",
+          fg: "#060A12",
+          soft: "#101A2B",
+          muted: "#22304A",
         },
-        // Dark footer
         footer: {
-          bg: "#111110",
-          text: "#A0A09A",
-          heading: "#F7F6F3",
+          bg: "#04070D",
+          text: "#697993",
+          heading: "#EEF2F8",
         },
         // Mirantic brand colors
         brand: {
@@ -37,6 +36,9 @@ export default {
         },
       },
       fontFamily: {
+        // Large editorial serif for display type, set light and tight — the
+        // weight is what keeps it from reading as a wedding invitation.
+        display: ["Newsreader", "Georgia", "Times New Roman", "serif"],
         sans: [
           "Hanken Grotesk",
           "ui-sans-serif",

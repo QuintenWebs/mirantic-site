@@ -1,286 +1,254 @@
-import { useState } from "react";
-import { WHAT_I_DO, STEPS, HOME } from "@/content";
 import { ButtonLink } from "@/components/Button";
+import { EditorDemo } from "@/components/EditorDemo";
 import { SectionHeading } from "@/components/SectionHeading";
+import { HOME, STEPS, WHAT_I_DO, PROJECTS } from "@/content";
 
+/**
+ * Home.
+ *
+ * Ordered as an argument rather than a brochure: what this is, proof it exists,
+ * the one thing nobody else offers, then how it works and what it costs. Every
+ * section carries evidence — live sites, the real editor — instead of adjectives.
+ */
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="pt-32 pb-24 sm:pt-40 sm:pb-32">
+      {/* ── Hero ── */}
+      <section className="pt-28 pb-20 sm:pt-36 sm:pb-28">
         <div className="container-page">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_auto] md:items-end">
-            <div className="reveal max-w-3xl">
-              <p className="eyebrow mb-5" data-cms-field="home.hero.eyebrow">{HOME.hero.eyebrow}</p>
-              <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.06] tracking-[-0.03em] text-ink">
-                <span data-cms-field="home.hero.titleLine1">{HOME.hero.titleLine1}</span>
-                <br className="hidden sm:block" />{" "}
-                <span data-cms-field="home.hero.titleLine2">{HOME.hero.titleLine2}</span>
-              </h1>
-            </div>
-            <div className="reveal max-w-sm md:pb-2" style={{ animationDelay: "0.1s" }}>
-              <p className="text-base leading-relaxed text-ink-soft" data-cms-field="home.hero.body">
-                {HOME.hero.body}
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <ButtonLink to="/contact" size="lg" withArrow>
-                  <span data-cms-field="home.hero.primaryCta">{HOME.hero.primaryCta}</span>
-                </ButtonLink>
-                <ButtonLink to="/work" size="lg" variant="outline">
-                  <span data-cms-field="home.hero.secondaryCta">{HOME.hero.secondaryCta}</span>
-                </ButtonLink>
-              </div>
+          <div className="reveal max-w-4xl">
+            <p className="eyebrow mb-6" data-cms-field="home.hero.eyebrow">
+              {HOME.hero.eyebrow}
+            </p>
+            <h1 className="font-display text-[clamp(3rem,9vw,6.5rem)] font-light leading-[1.0] tracking-tighter text-ink">
+              <span data-cms-field="home.hero.titleLine1">{HOME.hero.titleLine1}</span>
+              <br />
+              <span data-cms-field="home.hero.titleLine2">{HOME.hero.titleLine2}</span>
+            </h1>
+            <p
+              className="mt-8 max-w-xl text-base leading-relaxed text-ink-soft sm:text-lg"
+              data-cms-field="home.hero.body"
+            >
+              {HOME.hero.body}
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <ButtonLink to="/contact" size="lg" withArrow>
+                <span data-cms-field="home.hero.primaryCta">{HOME.hero.primaryCta}</span>
+              </ButtonLink>
+              <ButtonLink to="/#editor" size="lg" variant="outline">
+                <span data-cms-field="home.hero.secondaryCta">{HOME.hero.secondaryCta}</span>
+              </ButtonLink>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What I do */}
+      {/* ── Proof: real sites, running now ── */}
+      <section className="border-t border-line py-14">
+        <div className="container-page">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-baseline sm:justify-between">
+            <p className="eyebrow" data-cms-field="home.proof.label">
+              {HOME.proof.label}
+            </p>
+            <p
+              className="max-w-md text-sm text-ink-soft sm:text-right"
+              data-cms-field="home.proof.note"
+            >
+              {HOME.proof.note}
+            </p>
+          </div>
+          <div className="mt-8 grid grid-cols-1 gap-px bg-line sm:grid-cols-2">
+            {PROJECTS.map((project, i) => (
+              <a
+                key={project.url}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-canvas p-7 transition-colors duration-200 hover:bg-accent-soft"
+              >
+                <p
+                  className="text-xs text-ink-faint"
+                  data-cms-field={`projects[${i}].client`}
+                >
+                  {project.client}
+                </p>
+                <h3
+                  className="mt-2 font-display text-2xl font-light tracking-tightish text-ink"
+                  data-cms-field={`projects[${i}].name`}
+                >
+                  {project.name}
+                </h3>
+                <p
+                  className="mt-3 max-w-sm text-sm leading-relaxed text-ink-soft"
+                  data-cms-field={`projects[${i}].description`}
+                >
+                  {project.description}
+                </p>
+                <span className="mt-5 inline-block text-xs font-medium text-ink-faint transition-colors group-hover:text-ink">
+                  Visit site →
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── The editor: the one thing nobody else your size offers ── */}
+      <section id="editor" className="border-t border-line py-20 sm:py-28">
+        <div className="container-page">
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-5" data-cms-field="home.editor.eyebrow">
+              {HOME.editor.eyebrow}
+            </p>
+            <h2
+              className="font-display text-[clamp(2rem,4.5vw,3.25rem)] font-light leading-[1.08] tracking-tighter text-ink"
+              data-cms-field="home.editor.title"
+            >
+              {HOME.editor.title}
+            </h2>
+            <p
+              className="mt-5 text-base leading-relaxed text-ink-soft"
+              data-cms-field="home.editor.body"
+            >
+              {HOME.editor.body}
+            </p>
+          </div>
+
+          <div className="mt-12">
+            <EditorDemo />
+            <p
+              className="mt-4 text-xs text-ink-faint"
+              data-cms-field="home.editor.caption"
+            >
+              {HOME.editor.caption}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── What you get ── */}
       <section className="border-t border-line py-20 sm:py-28">
         <div className="container-page">
-          <SectionHeading eyebrow="What I do" title="Thoughtful sites, built to last and easy to run" />
-          <div className="mt-14 grid grid-cols-1 gap-0 sm:grid-cols-2">
+          <SectionHeading eyebrow="What I do" title="Built properly, then handed over" />
+          <div className="mt-14 grid grid-cols-1 gap-px bg-line sm:grid-cols-2">
             {WHAT_I_DO.map((f, i) => (
-              <div
-                key={f.title}
-                className={[
-                  "py-8 pr-8",
-                  i % 2 === 0 ? "sm:border-r border-line" : "",
-                  i < WHAT_I_DO.length - 2 ? "border-b border-line" : "",
-                ].join(" ")}
-              >
-                <p className="text-xs font-medium text-ink-faint tabular-nums mb-3">
+              <div key={f.title} className="bg-canvas p-8">
+                <p className="mb-3 text-xs tabular-nums text-ink-faint">
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h3 className="text-base font-semibold text-ink leading-snug" data-cms-field={`whatIDo[${i}].title`}>{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft" data-cms-field={`whatIDo[${i}].body`}>{f.body}</p>
+                <h3
+                  className="text-base font-semibold leading-snug text-ink"
+                  data-cms-field={`whatIDo[${i}].title`}
+                >
+                  {f.title}
+                </h3>
+                <p
+                  className="mt-2 text-sm leading-relaxed text-ink-soft"
+                  data-cms-field={`whatIDo[${i}].body`}
+                >
+                  {f.body}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How it works + CMS + Site examples — all in one block */}
+      {/* ── How it works — a real sequence, so the numbering earns itself ── */}
       <section className="border-t border-line py-20 sm:py-28">
         <div className="container-page">
           <SectionHeading eyebrow="How it works" title="From first call to a site you run yourself" />
-
-          {/* Steps */}
           <ol className="mt-14 grid grid-cols-1 gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((step, i) => (
               <li key={step.n} className="bg-canvas p-8">
-                <p className="text-3xl font-semibold tabular-nums text-ink/15 mb-5">{step.n}</p>
-                <h3 className="text-base font-semibold text-ink" data-cms-field={`steps[${i}].title`}>{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-soft" data-cms-field={`steps[${i}].body`}>{step.body}</p>
+                <p className="mb-5 font-display text-3xl font-light tabular-nums text-ink-faint">
+                  {step.n}
+                </p>
+                <h3
+                  className="text-base font-semibold text-ink"
+                  data-cms-field={`steps[${i}].title`}
+                >
+                  {step.title}
+                </h3>
+                <p
+                  className="mt-2 text-sm leading-relaxed text-ink-soft"
+                  data-cms-field={`steps[${i}].body`}
+                >
+                  {step.body}
+                </p>
               </li>
             ))}
           </ol>
+        </div>
+      </section>
 
-          {/* CMS placeholder */}
-          <div className="mt-16 border-t border-line pt-16">
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
-              <div>
-                <p className="eyebrow mb-4" data-cms-field="home.editor.eyebrow">{HOME.editor.eyebrow}</p>
-                <h2 className="text-2xl font-semibold leading-snug tracking-[-0.02em] text-ink sm:text-3xl" data-cms-field="home.editor.title">
-                  {HOME.editor.title}
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-ink-soft" data-cms-field="home.editor.body">
-                  {HOME.editor.body}
-                </p>
-                <p className="mt-3 text-sm text-ink-faint" data-cms-field="home.editor.note">{HOME.editor.note}</p>
-              </div>
-              {/* CMS placeholder — replace with GIF */}
-              <div className="overflow-hidden rounded-xl border border-line bg-accent-soft aspect-video flex items-center justify-center">
-                <p className="text-sm text-ink-faint">CMS screenshot / GIF</p>
-              </div>
+      {/* ── Objections: small buyers ask these and nobody answers them ── */}
+      <section className="border-t border-line py-20 sm:py-28">
+        <div className="container-page">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
+            <div>
+              <p className="eyebrow mb-5" data-cms-field="home.objections.eyebrow">
+                {HOME.objections.eyebrow}
+              </p>
+              <h2
+                className="font-display text-[clamp(1.85rem,3.5vw,2.75rem)] font-light leading-[1.1] tracking-tighter text-ink"
+                data-cms-field="home.objections.title"
+              >
+                {HOME.objections.title}
+              </h2>
             </div>
-          </div>
-
-          {/* Site examples */}
-          <div className="mt-16 border-t border-line pt-16">
-            <p className="eyebrow mb-6" data-cms-field="home.work.eyebrow">{HOME.work.eyebrow}</p>
-            <div className="grid grid-cols-1 gap-px bg-line md:grid-cols-2">
-              <SiteExample
-                label="New site"
-                title="ULP Invest"
-                description="A new site built from scratch for a Dutch microfinance foundation."
-                url="https://www.ulpinvest.com/investors"
-                heroImg="/assets/screenshots/ulpinvest-hero.webp"
-                scrollImg="/assets/screenshots/ulpinvest-scroll.webp"
-              />
-              <SiteExample
-                label="Rebuilt & improved"
-                title="Ubuntu Leadership Program"
-                description="A full redesign and rebuild of an existing site — faster, cleaner, and easier to manage."
-                url="https://ubuntu-lead-82ai2dtb.manus.space/"
-                heroImg="/assets/screenshots/ulp-new-hero.webp"
-                scrollImg="/assets/screenshots/ulp-new-scroll.webp"
-                beforeHeroImg="/assets/screenshots/ulp-old-hero.webp"
-                beforeScrollImg="/assets/screenshots/ulp-old-scroll.webp"
-              />
-            </div>
+            <dl className="divide-y divide-line border-t border-line">
+              {HOME.objections.items.map((item, i) => (
+                <div key={item.q} className="py-6">
+                  <dt
+                    className="text-base font-semibold text-ink"
+                    data-cms-field={`home.objections.items[${i}].q`}
+                  >
+                    {item.q}
+                  </dt>
+                  <dd
+                    className="mt-2 max-w-xl text-sm leading-relaxed text-ink-soft"
+                    data-cms-field={`home.objections.items[${i}].a`}
+                  >
+                    {item.a}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="border-t border-line py-20 sm:py-28">
+      {/* ── Contact ── */}
+      <section className="border-t border-line py-20 sm:py-28">
         <div className="container-page">
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
-            <div>
-              <p className="eyebrow mb-5" data-cms-field="home.contact.eyebrow">{HOME.contact.eyebrow}</p>
-              <h2 className="text-[clamp(1.75rem,3vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-ink" data-cms-field="home.contact.title">
-                {HOME.contact.title}
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-ink-soft max-w-sm" data-cms-field="home.contact.body">
-                {HOME.contact.body}
-              </p>
-              <div className="mt-8">
-                <a
-                  href="https://calendly.com/mirantic/intro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-ink-soft transition-colors"
-                >
-                  Or book a call directly
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M2.5 6h7M6.5 3l3 3-3 3" />
-                  </svg>
-                </a>
-              </div>
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-5" data-cms-field="home.contact.eyebrow">
+              {HOME.contact.eyebrow}
+            </p>
+            <h2
+              className="font-display text-[clamp(1.85rem,3.5vw,2.75rem)] font-light leading-[1.1] tracking-tighter text-ink"
+              data-cms-field="home.contact.title"
+            >
+              {HOME.contact.title}
+            </h2>
+            <p
+              className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft"
+              data-cms-field="home.contact.body"
+            >
+              {HOME.contact.body}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink to="/contact" size="lg" withArrow>
+                Get in touch
+              </ButtonLink>
+              <ButtonLink to="/pricing" size="lg" variant="outline">
+                See pricing
+              </ButtonLink>
             </div>
-            <ContactForm />
           </div>
         </div>
       </section>
     </>
-  );
-}
-
-interface SiteExampleProps {
-  label: string;
-  title: string;
-  description: string;
-  url: string;
-  heroImg: string;
-  scrollImg: string;
-  beforeHeroImg?: string;
-  beforeScrollImg?: string;
-}
-
-function SiteExample({ label, title, description, url, heroImg, scrollImg, beforeHeroImg, beforeScrollImg }: SiteExampleProps) {
-  const hasBeforeAfter = !!beforeHeroImg;
-  const [showBefore, setShowBefore] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  const activeHero = hasBeforeAfter && showBefore ? beforeHeroImg! : heroImg;
-  const activeScroll = hasBeforeAfter && showBefore ? beforeScrollImg! : scrollImg;
-
-  return (
-    <div className="bg-canvas p-8 flex flex-col gap-6">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <span className="inline-block rounded-full border border-line px-2.5 py-1 text-xs text-ink-faint mb-3">
-            {label}
-          </span>
-          <h3 className="text-base font-semibold text-ink">{title}</h3>
-          <p className="mt-1 text-sm text-ink-soft">{description}</p>
-        </div>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="shrink-0 inline-flex items-center gap-1 text-xs font-medium text-ink-faint hover:text-ink transition-colors mt-1"
-        >
-          Visit
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M2 2h6v6M8 2 2 8" />
-          </svg>
-        </a>
-      </div>
-
-      <div className="relative overflow-hidden rounded-lg border border-line bg-accent-soft">
-        <div className="flex items-center gap-1.5 border-b border-line bg-canvas px-3 py-2">
-          <span className="h-2 w-2 rounded-full bg-line" />
-          <span className="h-2 w-2 rounded-full bg-line" />
-          <span className="h-2 w-2 rounded-full bg-line" />
-        </div>
-        <div className="relative overflow-hidden" style={{ height: "240px" }}>
-          <img
-            src={scrolled ? activeScroll : activeHero}
-            alt={title + " screenshot"}
-            className="w-full object-cover object-top transition-all duration-500"
-            style={{ height: "100%" }}
-          />
-        </div>
-      </div>
-
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setScrolled(false)}
-            className={"text-xs font-medium transition-colors " + (!scrolled ? "text-ink" : "text-ink-faint hover:text-ink-soft")}
-          >
-            Top
-          </button>
-          <span className="text-ink-faint text-xs">/</span>
-          <button
-            onClick={() => setScrolled(true)}
-            className={"text-xs font-medium transition-colors " + (scrolled ? "text-ink" : "text-ink-faint hover:text-ink-soft")}
-          >
-            Scrolled
-          </button>
-        </div>
-        {hasBeforeAfter && (
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setShowBefore(false)}
-              className={"text-xs font-medium transition-colors " + (!showBefore ? "text-ink" : "text-ink-faint hover:text-ink-soft")}
-            >
-              After
-            </button>
-            <span className="text-ink-faint text-xs">/</span>
-            <button
-              onClick={() => setShowBefore(true)}
-              className={"text-xs font-medium transition-colors " + (showBefore ? "text-ink" : "text-ink-faint hover:text-ink-soft")}
-            >
-              Before
-            </button>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function ContactForm() {
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        alert("Message sent! I'll be in touch within a day.");
-      }}
-      className="flex flex-col gap-5"
-    >
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="home-name" className="text-xs font-medium text-ink-soft">Name</label>
-        <input id="home-name" type="text" placeholder="Your name" required
-          className="rounded-lg border border-line bg-canvas px-4 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-ink/20 transition" />
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="home-email" className="text-xs font-medium text-ink-soft">Email</label>
-        <input id="home-email" type="email" placeholder="you@example.com" required
-          className="rounded-lg border border-line bg-canvas px-4 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-ink/20 transition" />
-      </div>
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="home-message" className="text-xs font-medium text-ink-soft">Message</label>
-        <textarea id="home-message" rows={4} placeholder="Tell me a little about your business and what you're looking for." required
-          className="rounded-lg border border-line bg-canvas px-4 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:ring-2 focus:ring-ink/20 transition resize-none" />
-      </div>
-      <button type="submit"
-        className="self-start inline-flex items-center rounded-full bg-ink px-6 py-2.5 text-sm font-medium text-accent-fg hover:bg-ink/80 transition-colors duration-150">
-        Send message
-      </button>
-    </form>
   );
 }

@@ -8,7 +8,7 @@
     scroll-padding-top: 5rem; /* offset for the fixed header on anchor jumps */
   }
   body {
-    @apply bg-[#F7F6F3] text-ink-soft font-sans antialiased;
+    @apply bg-canvas text-ink-soft font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
   h1,
@@ -19,19 +19,19 @@
     text-wrap: balance;
   }
   ::selection {
-    background: rgba(17, 17, 16, 0.1);
+    background: rgba(70, 197, 242, 0.25);
   }
 }
 
 @layer components {
   /* Thicker dividers — use divide-line-thick or border-line-thick */
   .border-line-thick {
-    border-color: #C9C8C3;
+    border-color: #1B2740;
     border-width: 1.5px;
   }
   .divide-line-thick > * + * {
     border-top-width: 1.5px;
-    border-color: #C9C8C3;
+    border-color: #1B2740;
   }
   .container-page {
     @apply mx-auto w-full max-w-content px-6 sm:px-10;
