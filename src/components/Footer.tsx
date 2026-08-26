@@ -4,25 +4,25 @@ import { NAV, SITE } from "@/content";
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-footer-text">
+    <footer className="bg-footer-bg text-footer-text">
       <div className="container-page py-16 sm:py-20">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-[1fr_auto_auto]">
           {/* Brand column */}
           <div className="flex flex-col gap-6">
             <Link to="/" className="w-fit">
-              <Logo variant="light" height={20} />
+              <Logo variant="dark" height={20} />
             </Link>
             <p className="text-sm leading-relaxed max-w-xs">
-              Custom websites for small businesses — built to last, easy to manage.
+              Custom websites for small businesses, built to last and easy to manage.
             </p>
-            <p className="text-xs text-ink-faint">
+            <p className="text-xs text-footer-text/70">
               Based in the Netherlands
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.1em] text-ink-faint">Pages</p>
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.1em] text-footer-text/70">Pages</p>
             <nav className="flex flex-col gap-2.5">
               {NAV.map((item) => (
                 <Link
@@ -38,7 +38,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.1em] text-ink-faint">Get in touch</p>
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.1em] text-footer-text/70">Get in touch</p>
             <div className="flex flex-col gap-2.5">
               <Link
                 to="/contact"
@@ -66,8 +66,8 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-16 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <p className="text-xs text-ink-faint">© {new Date().getFullYear()} Mirantic</p>
-          <p className="text-xs text-ink-faint">Web design · The Netherlands</p>
+          <p className="text-xs text-footer-text/70">© {new Date().getFullYear()} Mirantic</p>
+          <p className="text-xs text-footer-text/70">Web design · The Netherlands</p>
         </div>
       </div>
     </footer>

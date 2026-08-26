@@ -21,10 +21,12 @@ export default {
           soft: "#101A2B",
           muted: "#22304A",
         },
+        // The footer is the one light block on the site: a deliberate close
+        // rather than the page fading out into more of the same dark.
         footer: {
-          bg: "#04070D",
-          text: "#697993",
-          heading: "#EEF2F8",
+          bg: "#EEF2F8",
+          text: "#4A5A72",
+          heading: "#0B1220",
         },
         // Mirantic brand colors
         brand: {

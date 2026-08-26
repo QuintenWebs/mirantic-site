@@ -13,7 +13,7 @@ export default function Services() {
               How I work with you, start to finish.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">
-              Every site follows the same careful process — from understanding your brand to handing you the keys and supporting you afterwards.
+              Every site follows the same careful process, from understanding your brand to handing you the keys and supporting you afterwards.
             </p>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function Services() {
           <div>
             <h2 className="text-2xl font-semibold tracking-[-0.02em] text-ink sm:text-3xl">Ready to start?</h2>
             <p className="mt-2 text-base text-ink-soft">
-              Book a discovery call or send a message — no commitment.
+              Book a discovery call or send a message. No commitment.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">

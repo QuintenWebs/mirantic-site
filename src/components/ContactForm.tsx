@@ -25,7 +25,7 @@ export function ContactForm() {
     // Fallback when no form service is configured: open the visitor's mail client.
     if (!ACCESS_KEY) {
       const subject = encodeURIComponent(`Website enquiry from ${name}`);
-      const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+      const body = encodeURIComponent(`${message}\n\nFrom ${name} (${email})`);
       window.location.href = `mailto:${SITE.contactEmail}?subject=${subject}&body=${body}`;
       setStatus("success");
       return;
@@ -64,7 +64,7 @@ export function ContactForm() {
         <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-accent text-white">
           <Check className="h-5 w-5" />
         </div>
-        <h3 className="mt-4 text-lg font-semibold text-ink">Thanks — message sent</h3>
+        <h3 className="mt-4 text-lg font-semibold text-ink">Thanks, message sent</h3>
         <p className="mt-1 text-sm text-ink-soft">
           I'll get back to you within a day. Prefer to talk now?
         </p>
@@ -119,7 +119,7 @@ export function ContactForm() {
         </div>
 
         {status === "error" && (
-          <p className="text-sm text-red-600">{error || "Couldn't send — please try again."}</p>
+          <p className="text-sm text-red-600">{error || "Couldn't send. Please try again."}</p>
         )}
 
         <Button type="submit" size="lg" disabled={status === "sending"} className="w-full sm:w-auto">

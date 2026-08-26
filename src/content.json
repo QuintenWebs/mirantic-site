@@ -10,14 +10,14 @@
       "eyebrow": "Web design · The Netherlands",
       "titleLine1": "Websites for",
       "titleLine2": "small business",
-      "body": "Custom-built, fast, and yours to change. Edit your own text and images in minutes — no developer, no ticket, no waiting.",
+      "body": "Custom-built, fast, and yours to change. Edit your own text and images in minutes, with no developer, no ticket and no waiting.",
       "primaryCta": "Start a project",
       "secondaryCta": "See the editor"
     },
     "editor": {
       "eyebrow": "Your editor",
       "title": "Change anything yourself",
-      "body": "Every site is handed over with an editor built into it. Click the thing you want to change, type, publish. The site updates in under a minute — no dashboard to learn, no support ticket, no invoice for a typo.",
+      "body": "Every site is handed over with an editor built into it. Click the thing you want to change, type, publish. The site updates in under a minute. No dashboard to learn, no support ticket, no invoice for a typo.",
       "caption": "Editing a caption on this very page.",
       "cta": "How it works"
     },
@@ -47,7 +47,7 @@
         },
         {
           "q": "Who fixes it if something breaks?",
-          "a": "I do. Hosting and the site itself are covered on every plan — you are not paying per incident to keep your own website online."
+          "a": "I do. Hosting and the site itself are covered on every plan, so you are not paying per incident to keep your own website online."
         },
         {
           "q": "How long does it take?",
@@ -59,7 +59,7 @@
   "whatIDo": [
     {
       "title": "I understand your brand first",
-      "body": "Before anything is designed, I learn how your brand communicates and who you're speaking to. The site follows from that — not the other way around."
+      "body": "Before anything is designed, I learn how your brand communicates and who you're speaking to. The site follows from that, not the other way around."
     },
     {
       "title": "Fast, modern, clean code",
@@ -67,7 +67,7 @@
     },
     {
       "title": "You manage it yourself",
-      "body": "After delivery you edit your own text and images through a simple editor — no developer needed for everyday changes."
+      "body": "After delivery you edit your own text and images through a simple editor. No developer is needed for everyday changes."
     },
     {
       "title": "I stay available",
@@ -83,7 +83,7 @@
     {
       "n": "02",
       "title": "I design and build",
-      "body": "I translate your brand into a fast, custom website — and keep you in the loop as it takes shape."
+      "body": "I translate your brand into a fast, custom website, and keep you in the loop as it takes shape."
     },
     {
       "n": "03",
@@ -113,7 +113,7 @@
       "name": "Standard Site",
       "price": "€1,500",
       "highlight": true,
-      "blurb": "More room to grow — with a blog and polished animations.",
+      "blurb": "More room to grow, with a blog and polished animations.",
       "features": [
         "Up to 10 pages",
         "Custom design",
@@ -126,7 +126,7 @@
     {
       "name": "Site + Web App",
       "price": "€3,500+",
-      "priceNote": "Starting price — scoped per project",
+      "priceNote": "Starting price, scoped per project",
       "blurb": "A marketing site with an authenticated portal or dashboard.",
       "features": [
         "Marketing site",
@@ -191,7 +191,7 @@
       "blurb": "Direct access to me for anything beyond content edits.",
       "features": [
         "Everything in Standard",
-        "Priority support — direct line to me",
+        "Priority support, a direct line to me",
         "Email domain management",
         "Event management on your site"
       ]
@@ -207,7 +207,7 @@
     {
       "name": "ULP Invest",
       "client": "Microfinance · Tanzania",
-      "description": "Trilingual site in Dutch, English and Swahili for the investment arm — every word editable in all three languages without touching code.",
+      "description": "Trilingual site in Dutch, English and Swahili for the investment arm. Every word is editable in all three languages without touching code.",
       "url": "https://www.ulpinvest.com"
     }
   ],
@@ -218,19 +218,19 @@
     },
     {
       "title": "Design",
-      "body": "I design from first principles around your content and your audience — layout, typography, and tone that fit you specifically. You see the direction early and we refine together. Nothing decorative for its own sake; every choice earns its place."
+      "body": "I design from first principles around your content and your audience: layout, typography and tone that fit you specifically. You see the direction early and we refine together. Nothing decorative for its own sake; every choice earns its place."
     },
     {
       "title": "Development & delivery",
-      "body": "I build the site with clean, modern code — fast to load, reliable, and responsive on every screen. No bloated page builders. When it's ready, it's genuinely ready: tested, polished, and live on your domain."
+      "body": "I build the site with clean, modern code that loads fast, stays reliable and works on every screen. No bloated page builders. When it's ready, it's genuinely ready: tested, polished, and live on your domain."
     },
     {
       "title": "CMS handover & training",
-      "body": "On delivery I walk you through your editor. You'll be able to change text and swap images on your own in minutes — click the thing you want to change, edit it, publish. I make sure you're comfortable before we wrap."
+      "body": "On delivery I walk you through your editor. You'll be able to change text and swap images on your own in minutes: click the thing you want to change, edit it, publish. I make sure you're comfortable before we wrap."
     },
     {
       "title": "Ongoing support",
-      "body": "Content edits are always yours to make. Beyond that, support depends on your plan: Starter and Standard cover the site and hosting (Standard adds an hour of changes a month), while Pro gives you a direct line to me for anything more — new sections, integrations, or just advice."
+      "body": "Content edits are always yours to make. Beyond that, support depends on your plan: Starter and Standard cover the site and hosting (Standard adds an hour of changes a month), while Pro gives you a direct line to me for anything more, whether that is new sections, integrations or just advice."
     }
   ],
   "pages": {
@@ -245,7 +245,7 @@
     "contact": {
       "eyebrow": "Contact",
       "title": "Let's talk about your site.",
-      "body": "Tell me a bit about your business and what you need. I reply within a day — or book a call and we'll talk it through.",
+      "body": "Tell me a bit about your business and what you need. I reply within a day, or book a call and we'll talk it through.",
       "formTitle": "Send a message"
     }
   }
