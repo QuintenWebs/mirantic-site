@@ -16,9 +16,6 @@ export default function Work() {
             <p className="mt-6 max-w-xl text-base leading-relaxed text-ink-soft">
               <span data-cms-field="pages.work.body">{PAGES.work.body}</span>
             </p>
-            <p className="mt-3 text-sm text-ink-faint">
-              <span data-cms-field="pages.work.note">{PAGES.work.note}</span>
-            </p>
           </div>
         </div>
       </section>

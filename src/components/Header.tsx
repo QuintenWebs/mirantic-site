@@ -29,7 +29,7 @@ export function Header() {
       <div className="container-page flex h-14 items-center justify-between">
         {/* Logo — full wordmark */}
         <Link to="/" aria-label="Mirantic home" className="flex items-center shrink-0">
-          <Logo variant="dark" height={22} />
+          <Logo variant="light" height={22} />
         </Link>
 
         {/* Desktop nav — centered */}

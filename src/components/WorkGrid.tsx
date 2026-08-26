@@ -15,14 +15,9 @@ export function WorkGrid({ projects }: WorkGridProps) {
           rel="noopener noreferrer"
           className="group relative flex flex-col bg-canvas p-8 hover:bg-accent-soft transition-colors duration-200"
         >
-          {project.placeholder && (
-            <span className="mb-5 self-start rounded-full border border-line px-2.5 py-1 text-xs text-ink-faint">
-              Placeholder
-            </span>
-          )}
           <div className="flex-1">
             <p className="text-xs text-ink-faint mb-2" data-cms-field={`projects[${i}].client`}>{project.client}</p>
-            <h3 className="text-base font-semibold text-ink group-hover:text-ink transition-colors" data-cms-field={`projects[${i}].name`}>
+            <h3 className="font-display text-2xl font-light tracking-tightish text-ink" data-cms-field={`projects[${i}].name`}>
               {project.name}
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-ink-soft" data-cms-field={`projects[${i}].description`}>{project.description}</p>

@@ -1,24 +1,25 @@
 {
   "site": {
     "name": "Mirantic",
-    "tagline": "Websites that represent who you are.",
+    "tagline": "Websites for small business.",
     "contactEmail": "quintenwbouma@gmail.com",
     "location": "the Netherlands"
   },
   "home": {
     "hero": {
       "eyebrow": "Web design · The Netherlands",
-      "titleLine1": "Websites that truly",
-      "titleLine2": "represent who you are.",
-      "body": "I design and build fast, custom websites for small businesses — then hand you a simple editor so updating your content never means waiting on a developer.",
-      "primaryCta": "Let's talk",
-      "secondaryCta": "See my work"
+      "titleLine1": "Websites for",
+      "titleLine2": "small business",
+      "body": "Custom-built, fast, and yours to change. Edit your own text and images in minutes — no developer, no ticket, no waiting.",
+      "primaryCta": "Start a project",
+      "secondaryCta": "See the editor"
     },
     "editor": {
       "eyebrow": "Your editor",
-      "title": "Update your site yourself — no developer needed.",
-      "body": "Every site comes with a clean, simple editor. Click what you want to change, type, publish. No complicated dashboards, no waiting on me for a text change.",
-      "note": "CMS demo coming soon."
+      "title": "Change anything yourself",
+      "body": "Every site is handed over with an editor built into it. Click the thing you want to change, type, publish. The site updates in under a minute — no dashboard to learn, no support ticket, no invoice for a typo.",
+      "caption": "Editing a caption on this very page.",
+      "cta": "How it works"
     },
     "work": {
       "eyebrow": "Recent work"
@@ -27,6 +28,32 @@
       "eyebrow": "Contact",
       "title": "Let's talk about your site.",
       "body": "Tell me a bit about your business and what you need. I reply within a day."
+    },
+    "proof": {
+      "label": "Live today",
+      "note": "Two sites running in production, both managed by their owners."
+    },
+    "objections": {
+      "eyebrow": "The awkward questions",
+      "title": "Answered before you ask",
+      "items": [
+        {
+          "q": "Do I own the site?",
+          "a": "Yes. The code lives in your own repository and the domain stays in your name. If we stop working together you keep everything, and any developer can pick it up."
+        },
+        {
+          "q": "What if I want to leave?",
+          "a": "Cancel any month. I hand over the repository and point the domain wherever you want. No exit fee and no hostage-taking."
+        },
+        {
+          "q": "Who fixes it if something breaks?",
+          "a": "I do. Hosting and the site itself are covered on every plan — you are not paying per incident to keep your own website online."
+        },
+        {
+          "q": "How long does it take?",
+          "a": "Two to four weeks for most sites, from the first call to going live. Rush delivery is possible and priced up front."
+        }
+      ]
     }
   },
   "whatIDo": [
@@ -172,46 +199,16 @@
   ],
   "projects": [
     {
-      "name": "Atelier Noord",
-      "client": "Furniture maker · Rotterdam",
-      "description": "A quiet, gallery-style site letting the craft speak for itself.",
-      "url": "#",
-      "placeholder": true
+      "name": "Ubuntu Leadership Program",
+      "client": "Non-profit · Tanzania",
+      "description": "A business school, investment fund and leadership trips in the Usambara Mountains. Twenty pages, a blog, and a team that publishes its own news.",
+      "url": "https://www.ubuntuleadershipprogram.nl"
     },
     {
-      "name": "Bloom & Stem",
-      "client": "Florist · Utrecht",
-      "description": "A warm storefront with seasonal collections the owner updates herself.",
-      "url": "#",
-      "placeholder": true
-    },
-    {
-      "name": "Northpeak Coaching",
-      "client": "Business coach · Amsterdam",
-      "description": "A focused one-page site built to turn visitors into booked calls.",
-      "url": "#",
-      "placeholder": true
-    },
-    {
-      "name": "Vetterij De Linde",
-      "client": "Veterinary practice · Eindhoven",
-      "description": "Clear service info, easy appointment links, and a calm visual tone.",
-      "url": "#",
-      "placeholder": true
-    },
-    {
-      "name": "Studio Vlam",
-      "client": "Ceramics studio · Den Haag",
-      "description": "A portfolio and workshop sign-up the studio manages end to end.",
-      "url": "#",
-      "placeholder": true
-    },
-    {
-      "name": "Koers Financieel",
-      "client": "Independent advisor · Groningen",
-      "description": "A trustworthy, no-nonsense site with self-managed content.",
-      "url": "#",
-      "placeholder": true
+      "name": "ULP Invest",
+      "client": "Microfinance · Tanzania",
+      "description": "Trilingual site in Dutch, English and Swahili for the investment arm — every word editable in all three languages without touching code.",
+      "url": "https://www.ulpinvest.com"
     }
   ],
   "serviceStages": [
@@ -240,8 +237,7 @@
     "work": {
       "eyebrow": "Work",
       "title": "Sites built for small businesses.",
-      "body": "A selection of recent projects. Each one is custom-built and handed over with an editor the owner manages themselves.",
-      "note": "Projects shown are placeholders while the portfolio is being finalised.",
+      "body": "Every project is custom-built and handed over with an editor the owner runs themselves.",
       "ctaTitle": "Want something like this?",
       "ctaBody": "Let's talk about what your business needs.",
       "cta": "Let's talk"
