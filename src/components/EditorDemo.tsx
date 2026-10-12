@@ -1,3 +1,4 @@
+import { Globe, RotateCw, ExternalLink } from "lucide-react";
 import { Logo } from "@/components/Logo";
 
 /**
@@ -12,57 +13,84 @@ import { Logo } from "@/components/Logo";
  * Built rather than screenshotted for the same reason: it stays sharp at any
  * size and updates itself when the headline does. A screen recording can replace
  * the left pane later without touching the surrounding section.
+ *
+ * Like the real editor, the site sits in a raised card with an address bar,
+ * set into the editor's own background, so it reads as "your site, inside the
+ * editor".
  */
 export function EditorDemo() {
   return (
     <div className="overflow-hidden rounded-xl border border-line bg-[#0A101C] shadow-2xl">
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px]">
-        {/* ── The site being edited, on its own white ground ── */}
-        <div className="bg-white p-6 sm:p-8">
-          <div className="flex items-center justify-between border-b border-[#E6E8EC] pb-4">
-            <Logo height={16} />
-            <div className="hidden gap-5 text-[11px] font-medium text-[#6B7280] sm:flex">
-              <span>Work</span>
-              <span>Services</span>
-              <span>Pricing</span>
-              <span>Contact</span>
+        {/* ── The site being edited, framed with an address bar ── */}
+        <div className="p-3 sm:p-4">
+          <div className="overflow-hidden rounded-lg border border-white/10 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.2),0_16px_40px_-12px_rgba(0,0,0,0.6)]">
+            <div className="flex h-9 items-center gap-2 border-b border-[#E6E8EC] bg-[#F6F7F9] px-3">
+              <div className="flex gap-1.5" aria-hidden>
+                <span className="h-2.5 w-2.5 rounded-full bg-black/10" />
+                <span className="h-2.5 w-2.5 rounded-full bg-black/10" />
+                <span className="h-2.5 w-2.5 rounded-full bg-black/10" />
+              </div>
+              <div className="mx-auto flex min-w-0 max-w-xs flex-1 items-center justify-center gap-1.5 rounded-full border border-[#E6E8EC] bg-white px-3 py-1 text-[11px] text-[#6B7280]">
+                <Globe className="h-3 w-3 shrink-0" aria-hidden />
+                <span className="truncate">mirantic.com</span>
+              </div>
+              <RotateCw
+                className="h-3.5 w-3.5 shrink-0 text-[#9CA3AF]"
+                aria-hidden
+              />
+              <ExternalLink
+                className="h-3.5 w-3.5 shrink-0 text-[#9CA3AF]"
+                aria-hidden
+              />
             </div>
-          </div>
+            <div className="bg-white p-6 sm:p-8">
+              <div className="flex items-center justify-between border-b border-[#E6E8EC] pb-4">
+                <Logo height={16} />
+                <div className="hidden gap-5 text-[11px] font-medium text-[#6B7280] sm:flex">
+                  <span>Work</span>
+                  <span>Services</span>
+                  <span>Pricing</span>
+                  <span>Contact</span>
+                </div>
+              </div>
 
-          <div className="pt-8 sm:pt-10">
-            <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#9CA3AF]">
-              Web design · The Netherlands
-            </p>
-            <p className="mt-3 font-display text-3xl font-light leading-[1.05] tracking-tighter text-[#0B1220] sm:text-4xl">
-              Websites for
-              <br />
-              small business
-            </p>
+              <div className="pt-8 sm:pt-10">
+                <p className="text-[10px] font-medium uppercase tracking-[0.14em] text-[#9CA3AF]">
+                  Web design · The Netherlands
+                </p>
+                <p className="mt-3 font-display text-3xl font-light leading-[1.05] tracking-tighter text-[#0B1220] sm:text-4xl">
+                  Websites for
+                  <br />
+                  small business
+                </p>
 
-            {/* The field under edit: outlined the way the bridge highlights a
+                {/* The field under edit: outlined the way the bridge highlights a
                 selected element, so the still matches what you actually see. */}
-            <div className="relative mt-9 inline-block max-w-md rounded-md ring-2 ring-brand-blue ring-offset-2">
-              <p className="px-1 py-0.5 text-sm leading-relaxed text-[#4B5563]">
-                Custom-built, fast, and yours to change.
-              </p>
-              <span className="absolute -top-[9px] left-2 -translate-y-full rounded bg-brand-blue px-1.5 py-0.5 text-[9px] font-medium text-white">
-                Hero · Subtitle
-              </span>
-            </div>
+                <div className="relative mt-9 inline-block max-w-md rounded-md ring-2 ring-brand-blue ring-offset-2">
+                  <p className="px-1 py-0.5 text-sm leading-relaxed text-[#4B5563]">
+                    Custom-built, fast, and yours to change.
+                  </p>
+                  <span className="absolute -top-[9px] left-2 -translate-y-full rounded bg-brand-blue px-1.5 py-0.5 text-[9px] font-medium text-white">
+                    Hero · Subtitle
+                  </span>
+                </div>
 
-            <div className="mt-6 flex gap-2">
-              <span className="rounded-md bg-[#0B1220] px-3 py-1.5 text-[11px] font-medium text-white">
-                Start a project
-              </span>
-              <span className="rounded-md border border-[#D1D5DB] px-3 py-1.5 text-[11px] font-medium text-[#374151]">
-                See the editor
-              </span>
+                <div className="mt-6 flex gap-2">
+                  <span className="rounded-md bg-[#0B1220] px-3 py-1.5 text-[11px] font-medium text-white">
+                    Start a project
+                  </span>
+                  <span className="rounded-md border border-[#D1D5DB] px-3 py-1.5 text-[11px] font-medium text-[#374151]">
+                    See the editor
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* ── The editor panel ── */}
-        <div className="flex flex-col gap-4 border-t border-line bg-[#0D1524] p-5 lg:border-l lg:border-t-0">
+        <div className="flex flex-col gap-4 border-t border-line p-5 lg:border-l lg:border-t-0">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-ink">Mirantic</span>
             <span className="rounded-md bg-brand-blue px-2.5 py-1 text-[10px] font-medium text-white">
@@ -84,11 +112,15 @@ export function EditorDemo() {
 
           <div className="border-t border-line pt-3">
             <p className="text-xs font-medium text-ink">Hero · Subtitle</p>
-            <p className="font-mono text-[10px] text-ink-faint">home.hero.subtitle</p>
+            <p className="font-mono text-[10px] text-ink-faint">
+              home.hero.subtitle
+            </p>
           </div>
 
           <div>
-            <p className="mb-1.5 text-[11px] font-medium text-ink-soft">Value</p>
+            <p className="mb-1.5 text-[11px] font-medium text-ink-soft">
+              Value
+            </p>
             <div className="rounded-md border border-line bg-canvas p-2.5">
               <p className="text-[11px] leading-relaxed text-ink">
                 Custom-built, fast, and yours to change.
