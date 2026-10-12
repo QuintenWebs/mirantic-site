@@ -39,7 +39,7 @@
       "items": [
         {
           "q": "Do I own the site?",
-          "a": "Yes. The code lives in your own repository and the domain stays in your name. If we stop working together you keep everything, and any other developer can pick it up."
+          "a": "Yes. The code lives in your own repository and the domain stays in your name. If we stop working together you keep everything, and any developer can pick it up."
         },
         {
           "q": "What if I want to leave?",
